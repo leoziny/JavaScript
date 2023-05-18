@@ -82,6 +82,15 @@
         <img src="" alt="" id="img">
   </main>
   <script>
+    let mascu = document.getElementById('masculino');
+    let femi = document.getElementById('feminino');
+        
+    function desmarcarFeminino() {
+      femi.checked = false;
+    }
+    function desmarcarMasculino() {
+      mascu.checked = false;
+    }
     function verificadorDeIdade(){
       let para = document.getElementById('para');
       let img = document.getElementById('img');
@@ -89,8 +98,6 @@
       img.src = '';
       img.style.cssText = '';
       let data = parseInt(document.getElementById('data').value);
-      let mascu = document.getElementById('masculino');
-      let femi = document.getElementById('feminino');
       let genero = mascu.checked ? 'Masculino' : 'Feminino';
       let idade = 2023 - data;
       img.style.cssText = 'display: block; border-radius: 50%; width: 200px; height: 200px; margin: auto;';
@@ -123,13 +130,9 @@
  
         
     }
-    function desmarcarFeminino() {
-      document.getElementById('feminino').checked = false;
-    }
 
-    function desmarcarMasculino() {
-      document.getElementById('masculino').checked = false;
-    }
+
+
          
   </script>
 </body>
