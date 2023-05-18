@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      background: linear-gradient(135deg, #F36265, #961276);
+      height: 100vh;
+      
+    }
+
+    h1{
+      text-align: center;
+      color: white;
+
+    }
+    main{
+      background-color: white;
+      width: 400px;
+      padding: 20px;
+      margin: auto;
+      border-radius: 7px;
+      box-shadow: 0px 0px 4px  black;
+
+    }
+    
+    #data{
+      display: inline-block;
+      margin-bottom: 10px;
+      outline: none;
+      border: 1px solid black;
+      border-radius: 5px;
+    }
+    #data:focus{
+      box-shadow: 0px 0px 2px 1px rgba(69, 69, 253, 0.336);
+    }
+    label{
+      display: block;
+      margin-bottom: 10px;
+    }
+    input[type="button"]{
+     border-radius: 50px;
+     background-color: transparent;
+     width: 100px;
+      border: 1px solid black;
+      height: 20px;
+      cursor: pointer;
+      transition: 0.5s ease;
+
+    }
+    input[type="button"]:hover{
+      background-color: black;
+      color: white;
+    }
+    div{
+      display: inline;
+    }
+    #para {
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+  <h1>Verificador de idade</h1>
+</header>
+  <main>
+        <label>Ano de nascimento:</label>
+        <input type="text" name="" id="data" maxlength="4">
+        <label for="">Sexo:
+           <input type="radio" name="" id="masculino" onclick="desmarcarFeminino()">
+          <div>Masculino</div>
+          <input type="radio" name="" id="feminino"  onclick="desmarcarMasculino()">
+          <div>Feminino</div>
+      </label>
+        <input type="button" value="Verificar" onclick="verificadorDeIdade()">
+        <p id="para"></p>
+        <img src="" alt="" id="img">
+  </main>
+  <script>
+    function verificadorDeIdade(){
+      let para = document.getElementById('para');
+      let img = document.getElementById('img');
+      para.innerHTML = '';
+      img.src = '';
+      img.style.cssText = '';
+      let data = parseInt(document.getElementById('data').value);
+      let mascu = document.getElementById('masculino');
+      let femi = document.getElementById('feminino');
+      let genero = mascu.checked ? 'Masculino' : 'Feminino';
+      let idade = 2023 - data;
+      img.style.cssText = 'display: block; border-radius: 50%; width: 200px; height: 200px; margin: auto;';
+
+      para.innerHTML = `Você tem ${idade} anos e é do sexo ${genero}.`
+      if(isNaN(idade)) {
+        para.innerHTML ='Digite uma idade válida'
+        img.style.cssText = '';
+      }
+      else if(idade < 0 ){
+        para.innerHTML ='Digite uma data correta!'
+        img.style.cssText = '';
+      }else if(idade <= 10 && genero == 'Masculino'){
+        img.src = 'https://classic.exame.com/wp-content/uploads/2021/10/Bebe.jpg?quality=70&strip=info&w=1024'
+      }else if(idade <= 10 && genero == 'Feminino'){
+        img.src = 'https://imgmarketplace.lojasrenner.com.br/20001/2106/7010700334824/7510700364522/0.jpeg'
+      }else if(idade <= 18 && genero == 'Masculino'){
+        img.src = 'https://media.gazetadopovo.com.br/sites/2/2021/03/19181314/adolescente-tudo-igual-960x540.jpg'
+      }else if(idade <= 18 && genero == 'Feminino'){
+        img.src = 'https://img.freepik.com/fotos-gratis/retrato-de-adolescente-feliz-por-voltar-a-universidade_23-2148586575.jpg?w=2000'
+      }else if(idade <= 50 && genero == 'Masculino'){
+        img.src = 'https://img.freepik.com/fotos-gratis/homem-adulto-atraente-cruzando-os-bracos-e-sorrindo_176420-18744.jpg'
+      }else if(idade <= 50 && genero == 'Feminino'){
+        img.src = 'https://www.psitto.com.br/wp-content/uploads/2022/12/autismo-adulto.jpg'
+      }else if(idade <= 100 && genero == 'Masculino'){
+        img.src = 'https://s2.glbimg.com/NS8szt7UsnHS_WEOHNTFn0gKUgs=/620x465/s.glbimg.com/jo/g1/f/original/2016/01/12/idoso_sena4.jpg'
+      }else if(idade <= 100 && genero == 'Feminino'){
+        img.src = 'https://img.freepik.com/fotos-gratis/vista-frontal-confiante-velha-posando-no-estudio_23-2149722110.jpg'
+      }
+ 
+        
+    }
+    function desmarcarFeminino() {
+      document.getElementById('feminino').checked = false;
+    }
+
+    function desmarcarMasculino() {
+      document.getElementById('masculino').checked = false;
+    }
+         
+  </script>
+</body>
+</html>
